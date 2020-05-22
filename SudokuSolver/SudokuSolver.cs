@@ -7,7 +7,6 @@ namespace SudokuSolver
 {
     class Solver
     {
-        static bool complete = false;
 
         static void Main(string[] args)
         {
@@ -15,7 +14,8 @@ namespace SudokuSolver
 
             //when I create unit tests, this will be the basic format
             //theres a minimum number of clues required for it to have a single solution
-            //will need to make sure I follow that in the unit tests
+            //will need to make sure I follow that in the unit tests (I believe 17 clues are required(
+
             int[,] grid = {{ 0, 0, 0, 2, 6, 0, 7, 0, 1 },
                            { 6, 8, 0, 0, 7, 0, 0, 9, 0 },
                            { 1, 9, 0, 0, 0, 4, 5, 0, 0 },
@@ -27,67 +27,53 @@ namespace SudokuSolver
                            { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
             };
 
-            //bool deez = ValidatePlacement(grid, 0, 0);
-            //Console.WriteLine(deez);
-
             Solve(grid, 0, 0);
+
+            PrintGrid(grid);
         }
 
-        //thinking the best solution to this problem will be with a recursive backtracking algorithm
-        static void Solve(int[,] grid, int row, int col)
+        /*
+         A recursive method to solve the Sudoku puzzle.
+         Uses a backtracking algorithm to do this.
+         */
+        static bool Solve(int[,] grid, int row, int col)
         {
-            //Check column
-            if (row == 9 && !complete)
-            {
-                col++;
+            if (row == 9) {//end of row (moves down 1 row)
                 row = 0;
-            }
-
-            //Check row
-            if (col == 9 && !complete)
-            {
-                //If it gets in here, the algorithm is complete! 
-                //Console.WriteLine("Complete!");
-                PrintGrid(grid);
-                complete = true;
-            }
-
-            if (!complete)
-            {
-
-                //Check if value already exists
-                if (grid[row, col] != 0)
-                {
-                    //One of the game clues, no need to place anything here.
-                    Solve(grid, row + 1, col);
+                col++;
+                if (col == 9) {//complete
+                    return true;
                 }
+            }
 
-                //Trys placing values, if a placement validates, continue
-                for (int i = 0; i < 9; i++)
+            if (grid[row, col] != 0) {//clue value, so move on
+                return Solve(grid, row + 1, col);
+            }
+
+            for (int i = 1; i <= 9; i++) {
+                if(ValidatePlacement(grid, row, col, i))
                 {
                     grid[row, col] = i;
-                    if (ValidatePlacement(grid, row, col))
+                    if(Solve(grid, row + 1, col))
                     {
-                        Solve(grid, row + 1, col);
+                        return true;
                     }
                 }
             }
 
-            //Console.WriteLine("Error: Failed to place value");
-            return;
+            grid[row, col] = 0;
+            return false;
 
         }
 
-        static bool ValidatePlacement(int[,] grid, int row, int col)
+        /* This method checks if the value can be placed in the current position */
+        static bool ValidatePlacement(int[,] grid, int row, int col, int newVal)
         {
-            //would be nicer for these all to be in seperate methods
-
             //Check column
             for (int i = 0; i < 9; i++)
             {
-                if (grid[col, row] == grid[i, row] && i != col)
+                if (grid[row, i] == newVal)
                 {
-                    //Console.WriteLine("Column check failed");
                     return false;
                 }
             }
@@ -95,133 +81,39 @@ namespace SudokuSolver
             //Check row
             for (int i = 0; i < 9; i++)
             {
-                if (grid[col, row] == grid[col, i] && i != row)
+                if (grid[i, col] == newVal)
                 {
-                    //Console.WriteLine("Row check failed");
                     return false;
                 }
             }
 
-            //Check 3x3 (This is so garbage atm
-            int[] topLeft = new int[2]; // thinking i'll get the top left position and work out the values from there
+            //Calculates where the top left of the 3x3 is
+            int[] topLeft = new int[2];
+            topLeft[0] = (row / 3) * 3;
+            topLeft[1] = (col / 3) * 3;
 
-            //This solution is temporary; will find a more effecient way to do this once the code is working
-            int rowNum;
-            if (row > -1 && row < 3)
-            {
-                rowNum = 0;
-            }
-            else if (row > 2 && row < 5)
-            {
-                rowNum = 1;
-            }
-            else
-            {
-                rowNum = 2;
-            }
-
-            int colNum;
-            if (col > -1 && col < 3)
-            {
-                colNum = 0;
-            }
-            else if (col > 2 && col < 5)
-            {
-                colNum = 1;
-            }
-            else
-            {
-                colNum = 2;
-            }
-
-            int[,] positions = { { 0, 3, 6 }, { 1, 4, 7 }, { 2, 5, 8 } };
-            //int[,] positions = { { 0, 1, 2 }, { 3, 4, 5 }, { 6, 7, 8 } };
-
-            int pos = positions[rowNum, colNum];
-
-            if (pos == 0)
-            {
-                topLeft[0] = 0;
-                topLeft[1] = 0;
-            }
-            else if (pos == 1)
-            {
-                topLeft[0] = 0;//column
-                topLeft[1] = 3;//row
-            }
-            else if (pos == 2)
-            {
-                topLeft[0] = 0;
-                topLeft[0] = 6;
-            }
-            else if (pos == 3)
-            {
-                topLeft[0] = 3;//column
-                topLeft[1] = 0;//row
-            }
-            else if (pos == 4)
-            {
-                topLeft[0] = 3;
-                topLeft[0] = 3;
-            }
-            else if (pos == 5)
-            {
-                topLeft[0] = 3;//column
-                topLeft[1] = 6;//row
-            }
-            else if (pos == 6)
-            {
-                topLeft[0] = 6;
-                topLeft[0] = 0;
-            }
-            else if (pos == 7)
-            {
-                topLeft[0] = 6;//column
-                topLeft[1] = 3;//row
-            }
-            else if (pos == 8)
-            {
-                topLeft[0] = 6;
-                topLeft[0] = 6;
-            }
-
-            if (!CheckThreeByThree(grid, topLeft, col, row))
-            {
-                //Console.WriteLine("Error: 3x3 check failed.");
-                return false;
-            }
-
-            return true;
-        }
-
-        static bool CheckThreeByThree(int[,] grid, int[] topLeft, int col, int row)
-        {
-            int topCol = topLeft[0];
-            int topRow = topLeft[1];
-
-            // if (new value) == all other values - false. otherwise true.
-            // since we know all values so far are correct, we dont need to check every value to each other
-
+            //Checks the 3x3
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (grid[col, row] == grid[topCol + i, topRow + j] && !(topCol + i == col && topRow + j == row))
+                    if (newVal == grid[topLeft[0] + i, topLeft[1] + j])
                     {
-                        //Console.WriteLine("Failed: " + grid[col, row] + " " + grid[col + i, row + j]);
                         return false;
                     }
-                    //Console.WriteLine(grid[col, row] + " " + grid[topCol + i, topRow + j]);
                 }
             }
 
+            //If it makes it here, the value is able to be placed
             return true;
         }
 
         static void PrintGrid(int[,] grid)
         {
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
                     Console.Write(grid[i, j]);
                 }
                 Console.WriteLine();
