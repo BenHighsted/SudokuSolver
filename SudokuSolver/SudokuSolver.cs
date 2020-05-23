@@ -10,11 +10,9 @@ namespace SudokuSolver
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Program running...\n");
-
             //when I create unit tests, this will be the basic format
             //theres a minimum number of clues required for it to have a single solution
-            //will need to make sure I follow that in the unit tests (I believe 17 clues are required(
+            //will need to make sure I follow that in the unit tests (I believe 17 clues are required)
 
             int[,] grid = {{ 0, 0, 0, 2, 6, 0, 7, 0, 1 },
                            { 6, 8, 0, 0, 7, 0, 0, 9, 0 },
@@ -29,6 +27,7 @@ namespace SudokuSolver
 
             Solve(grid, 0, 0);
 
+            Console.WriteLine("Output:");
             PrintGrid(grid);
         }
 
@@ -50,6 +49,7 @@ namespace SudokuSolver
                 return Solve(grid, row + 1, col);
             }
 
+            //try placing values
             for (int i = 1; i <= 9; i++) {
                 if(ValidatePlacement(grid, row, col, i))
                 {
@@ -112,12 +112,15 @@ namespace SudokuSolver
         {
             for (int i = 0; i < 9; i++)
             {
+                Console.WriteLine("  -------------------------------------");
+                Console.Write("  | ");
                 for (int j = 0; j < 9; j++)
                 {
-                    Console.Write(grid[i, j]);
+                    Console.Write(grid[i, j] + " | ");
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("  -------------------------------------");
         }
 
     }

@@ -8,28 +8,26 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/benhighsted/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Ben Highsted\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/benhighsted/Projects/SudokuSolver/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
+      "projectUniqueName": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
       "projectName": "SudokuSolver",
-      "projectPath": "/Users/benhighsted/Projects/SudokuSolver/SudokuSolver/SudokuSolver/SudokuSolver.csproj",
-      "packagesPath": "/Users/benhighsted/.nuget/packages/",
-      "outputPath": "/Users/benhighsted/Projects/SudokuSolver/SudokuSolver/SudokuSolver/obj/",
+      "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
+      "packagesPath": "C:\\Users\\Ben Highsted\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/benhighsted/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Ben Highsted\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -60,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
