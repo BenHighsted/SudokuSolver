@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         
         ResizeMode="NoResize"
-        Title="Sudoku Solver" Height="800" Width="800">
+        Title="Sudoku Solver" Height="800" Width="1200">
 
-    <Grid ShowGridLines="True">
 
+    <Grid Name="GameGrid" ShowGridLines="True" Height="659" Margin="360,0,77,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -34,6 +34,18 @@
             <RowDefinition Height ="*" />
             <RowDefinition Height ="*" />
         </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="9" Grid.RowSpan="9"/>
+
+        <Label Name="Title" Content="Sudoku Solver" Margin="-314,-37,134,53" FontSize="40"/>
+        <Label Name="Signature" Content="By Ben Highsted" Margin="-260,20,188,12" FontSize="20"/>
+
+        <StackPanel Name="ControlPanel" Margin="-324,73,124,0" Grid.RowSpan="9" Background="Gray">
+            <Button x:Name="start" Content="Start" Click="StartClick" Height="63" Background="White" Width="224" Margin="0,15,0,0"/>
+            <Label x:Name="StepCount" Content="" Background="Gray" Height="52" Margin="20,440,20,20" Width="224" FontWeight="Normal" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+
+
 
         <Label Name="label1" FontSize="25" Margin="30,18,30,18" Grid.Column="0"/>
         <Label Name="label2" FontSize="25" Margin="30,18,30,18" Grid.Column="1"/>

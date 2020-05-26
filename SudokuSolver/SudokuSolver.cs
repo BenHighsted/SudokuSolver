@@ -7,7 +7,7 @@ namespace SudokuSolver
 {
     class Solver
     {
-
+        public static int moves = 0;
         static void Main(string[] args)
         {
             //when I create unit tests, this will be the basic format
@@ -29,6 +29,7 @@ namespace SudokuSolver
 
             Console.WriteLine("Output:");
             PrintGrid(grid);
+            Console.WriteLine("Total Moves: " + moves);
         }
 
         /*
@@ -41,11 +42,13 @@ namespace SudokuSolver
                 row = 0;
                 col++;
                 if (col == 9) {//complete
+                    moves++;
                     return true;
                 }
             }
 
             if (grid[row, col] != 0) {//clue value, so move on
+                moves++;
                 return Solve(grid, row + 1, col);
             }
 
@@ -53,6 +56,7 @@ namespace SudokuSolver
             for (int i = 1; i <= 9; i++) {
                 if(ValidatePlacement(grid, row, col, i))
                 {
+                    moves++;
                     grid[row, col] = i;
                     if(Solve(grid, row + 1, col))
                     {

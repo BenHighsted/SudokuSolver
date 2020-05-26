@@ -12,9 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
 
+using System.Diagnostics;
 using SudokuSolver;
+using System.Threading;
+using System.ComponentModel;
+
+/** 
+ * 
+ * Thinking because of the way I want it to update in real time, I might need to use windows forms.
+ * Probably need to do more research before I make the switch.
+ * 
+ */
 
 namespace SudokuInterface
 {
@@ -23,29 +32,35 @@ namespace SudokuInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int[,] grid = {{ 0, 0, 0, 2, 6, 0, 7, 0, 1 },
+                              { 6, 8, 0, 0, 7, 0, 0, 9, 0 },
+                              { 1, 9, 0, 0, 0, 4, 5, 0, 0 },
+                              { 8, 2, 0, 1, 0, 0, 0, 4, 0 },
+                              { 0, 0, 4, 6, 0, 2, 9, 0, 0 },
+                              { 0, 5, 0, 0, 0, 3, 0, 2, 8 },
+                              { 0, 0, 9, 3, 0, 0, 0, 7, 4 },
+                              { 0, 4, 0, 0, 5, 0, 0, 3, 6 },
+                              { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
+        };
+
         public MainWindow()
         {
             InitializeComponent();
-
-            int[,] grid = {{ 0, 0, 0, 2, 6, 0, 7, 0, 1 },
-                           { 6, 8, 0, 0, 7, 0, 0, 9, 0 },
-                           { 1, 9, 0, 0, 0, 4, 5, 0, 0 },
-                           { 8, 2, 0, 1, 0, 0, 0, 4, 0 },
-                           { 0, 0, 4, 6, 0, 2, 9, 0, 0 },
-                           { 0, 5, 0, 0, 0, 3, 0, 2, 8 },
-                           { 0, 0, 9, 3, 0, 0, 0, 7, 4 },
-                           { 0, 4, 0, 0, 5, 0, 0, 3, 6 },
-                           { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
-            };
-
             UpdateGrid(grid);
-
-            System.Threading.Thread.Sleep(2000);
-
-            Solve(grid, 0, 0);
         }
 
-        void UpdateGrid(int[,] grid) 
+        public void StartClick(object sender, RoutedEventArgs e) {
+            int[,] newGrid = grid;
+
+            UpdateGrid(newGrid);
+            Solve(newGrid, 0, 0);
+
+            UpdateGrid(newGrid);
+
+            start.IsEnabled = false;
+        }
+
+        void UpdateGrid(int[,] grid)
         {
             int count = 0;
             for (int i = 0; i < 9; i++)
@@ -56,15 +71,18 @@ namespace SudokuInterface
 
                     String labelName = "label" + (++count);
                     Label label = (Label)FindName(labelName);
-                    if (val == 0)
+                    if (val != 0)
+                    {
+                        label.Content = val.ToString();
+
+                    }
+                    else
                     {
                         label.Content = "";
                     }
-                    else {
-                        label.Content = val.ToString();
-                    }
                 }
             }
+
         }
 
         /** might move these to a libary later but for now keeping them here */
@@ -145,6 +163,5 @@ namespace SudokuInterface
             //If it makes it here, the value is able to be placed
             return true;
         }
-
     }
 }
