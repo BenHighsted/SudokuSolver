@@ -17,7 +17,7 @@ using System.Diagnostics;
 using SudokuSolver;
 using System.Threading;
 using System.ComponentModel;
-
+using System.Windows.Threading;
 
 namespace SudokuInterface
 {
@@ -37,9 +37,9 @@ namespace SudokuInterface
                               { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
         };
 
-        int[,] originalGrid = new int[9, 9];
-
+        public int[,] originalGrid = new int[9, 9];
         public int moves = 0;
+        public bool running = false, difficult = false;
 
         public MainWindow()
         {
@@ -47,30 +47,29 @@ namespace SudokuInterface
             UpdateGrid(grid);
         }
 
-        public void StartClick(object sender, RoutedEventArgs e) {
-
+        public void StartClick(object sender, RoutedEventArgs e)
+        {
             if (start.Content.Equals("Start"))
-            {  
-                for(int i = 0; i < 9; i++)
+            {
+                for (int i = 0; i < 9; i++)
                 {
-                    for (int j = 0; j < 9; j++) 
+                    for (int j = 0; j < 9; j++)
                     {
                         int val = grid[i, j];
                         originalGrid[i, j] = val;
                     }
                 }
 
-                UpdateGrid(grid);
+                running = true;
                 Solve(grid, 0, 0);
+                running = false;
 
                 stepCount.Text = "Solved in " + moves + " moves.";// Displays the number of moves made
                 moves = 0;
 
-                UpdateGrid(grid);
-
                 start.Content = "Reset";
             }
-            else if (start.Content.Equals("Reset")) 
+            else if (start.Content.Equals("Reset"))
             {
                 UpdateGrid(originalGrid);
                 start.Content = "Start";
@@ -84,6 +83,25 @@ namespace SudokuInterface
                     }
                 }
             }
+        }
+
+        void UpdateLabel(String val, Label label)
+        {
+            Task.Run(() =>
+            {
+                Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    if (!val.Equals("0"))
+                    {
+                        label.Content = val;
+                    }
+                    else
+                    {
+                        label.Content = "";
+                    }
+                }), DispatcherPriority.Render);
+                Thread.Sleep(10);
+            });
         }
 
         public void LoadClick(object sender, RoutedEventArgs e)
@@ -107,7 +125,17 @@ namespace SudokuInterface
             }
         }
 
-        public void CreateGridFromFile(String[] file) 
+        void HandleCheck(object sender, RoutedEventArgs e) 
+        {
+            difficult = true;
+        }
+
+        void HandleUnchecked(object sender, RoutedEventArgs e) 
+        {
+            difficult = false;
+        }
+
+        public void CreateGridFromFile(String[] file)
         {
             int[,] newGrid = grid;
 
@@ -115,7 +143,7 @@ namespace SudokuInterface
             {
                 String[] row = file[i].Split(" ");
 
-                for (int j = 0; j < 9; j++) 
+                for (int j = 0; j < 9; j++)
                 {
                     newGrid[i, j] = int.Parse(row[j]);
                 }
@@ -135,13 +163,28 @@ namespace SudokuInterface
 
                     String labelName = "label" + (++count);
                     Label label = (Label)FindName(labelName);
+
                     if (val != 0)
                     {
-                        label.Content = val.ToString();
+                        //label.Content = val.ToString();
+                       if (running == true && difficult == false)
+                        {
+                            UpdateLabel(val.ToString(), label);
+                        }
+                        else {
+                            label.Content = val.ToString();
+                        }
                     }
                     else
                     {
-                        label.Content = "";
+                        //label.Content = "";
+                        if (running == true && difficult == false)
+                        {
+                            UpdateLabel("", label);
+                        }
+                        else {
+                            label.Content = "";
+                        }
                     }
                 }
             }
@@ -150,6 +193,11 @@ namespace SudokuInterface
         /** might move these to a libary later but for now keeping them here */
         bool Solve(int[,] grid, int row, int col)
         {
+            if (!difficult) 
+            {
+                UpdateGrid(grid);
+            }
+
             if (row == 9)
             {//end of row (moves down 1 row)
                 row = 0;
@@ -173,12 +221,23 @@ namespace SudokuInterface
                 {
                     moves++;
                     grid[row, col] = i;
+
+                    if (!difficult)
+                    {
+                        UpdateGrid(grid);
+                    }
+
                     if (Solve(grid, row + 1, col))
                     {
                         UpdateGrid(grid);
                         return true;
                     }
                 }
+            }
+
+            if (!difficult) 
+            {
+                UpdateGrid(grid);
             }
 
             grid[row, col] = 0;
