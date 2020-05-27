@@ -18,12 +18,6 @@ using SudokuSolver;
 using System.Threading;
 using System.ComponentModel;
 
-/** 
- * 
- * Thinking because of the way I want it to update in real time, I might need to use windows forms.
- * Probably need to do more research before I make the switch.
- * 
- */
 
 namespace SudokuInterface
 {
@@ -42,6 +36,9 @@ namespace SudokuInterface
                               { 0, 4, 0, 0, 5, 0, 0, 3, 6 },
                               { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
         };
+
+        int[,] originalGrid = new int[9, 9];
+
         public int moves = 0;
 
         public MainWindow()
@@ -52,21 +49,41 @@ namespace SudokuInterface
 
         public void StartClick(object sender, RoutedEventArgs e) {
 
-            if(start.Content.Equals("Start")) 
-            {
-                int[,] newGrid = grid;
+            if (start.Content.Equals("Start"))
+            {  
+                for(int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++) 
+                    {
+                        int val = grid[i, j];
+                        originalGrid[i, j] = val;
+                    }
+                }
 
-                UpdateGrid(newGrid);
-                Solve(newGrid, 0, 0);
+                UpdateGrid(grid);
+                Solve(grid, 0, 0);
 
-                stepCount.Content = "Solved in " + moves + " moves.";// Displays the number of moves made
+                stepCount.Text = "Solved in " + moves + " moves.";// Displays the number of moves made
                 moves = 0;
 
-                UpdateGrid(newGrid);
+                UpdateGrid(grid);
 
                 start.Content = "Reset";
             }
+            else if (start.Content.Equals("Reset")) 
+            {
+                UpdateGrid(originalGrid);
+                start.Content = "Start";
 
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        int val = originalGrid[i, j];
+                        grid[i, j] = val;
+                    }
+                }
+            }
         }
 
         public void LoadClick(object sender, RoutedEventArgs e)
@@ -81,10 +98,12 @@ namespace SudokuInterface
             if (result == true)
             {
                 String filename = openFile.FileName;
-                openedFile.Content = "Opened file: " + filename;
+                openedFile.Text = "Opened file: " + filename;
 
                 string[] file = System.IO.File.ReadAllLines(filename);
                 CreateGridFromFile(file);
+
+                start.Content = "Start";
             }
         }
 
@@ -119,7 +138,6 @@ namespace SudokuInterface
                     if (val != 0)
                     {
                         label.Content = val.ToString();
-
                     }
                     else
                     {
