@@ -71,15 +71,38 @@ namespace SudokuInterface
 
         public void LoadClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("'Load File' button pressed");
+            Microsoft.Win32.OpenFileDialog openFile = new Microsoft.Win32.OpenFileDialog();
+
+            openFile.DefaultExt = ".txt";
+            openFile.Filter = "Text documents (.txt)|*.txt";
+
+            Nullable<bool> result = openFile.ShowDialog();
+
+            if (result == true)
+            {
+                String filename = openFile.FileName;
+                openedFile.Content = "Opened file: " + filename;
+
+                string[] file = System.IO.File.ReadAllLines(filename);
+                CreateGridFromFile(file);
+            }
         }
 
-        public void CreateGridFromFile(String file) 
+        public void CreateGridFromFile(String[] file) 
         {
-            for (int i = 0; i < 81; i++) 
-            { 
-                
+            int[,] newGrid = grid;
+
+            for (int i = 0; i < 9; i++)
+            {
+                String[] row = file[i].Split(" ");
+
+                for (int j = 0; j < 9; j++) 
+                {
+                    newGrid[i, j] = int.Parse(row[j]);
+                }
             }
+
+            UpdateGrid(newGrid);
         }
 
         void UpdateGrid(int[,] grid)
@@ -115,7 +138,6 @@ namespace SudokuInterface
                 col++;
                 if (col == 9)
                 {//complete
-                    moves++;
                     return true;
                 }
             }

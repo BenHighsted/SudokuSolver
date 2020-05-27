@@ -23,15 +23,15 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
-            <RowDefinition Height ="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Border BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="9" Grid.RowSpan="9"/>
@@ -42,6 +42,7 @@
         <StackPanel Name="ControlPanel" Margin="-324,73,124,0" Grid.RowSpan="9" Background="Gray">
             <Button x:Name="start" Content="Start" Click="StartClick" Height="63" Background="White" Width="224" Margin="0,15,0,0"/>
             <Button x:Name="load" Content="Load File" Click="LoadClick" Height="63" Background="White" Width="224" Margin="0, 15, 0, 0"></Button>
+            <Label x:Name="openedFile" Content="No file loaded" />
             <Label x:Name="stepCount" Content="" Background="White" Height="52" Margin="20,348,20,20" Width="224" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </StackPanel>
 
