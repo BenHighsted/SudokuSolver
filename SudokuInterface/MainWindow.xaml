@@ -9,7 +9,6 @@
         ResizeMode="NoResize"
         Title="Sudoku Solver" Height="800" Width="1200">
 
-
     <Grid Name="GameGrid" ShowGridLines="True" Height="659" Margin="360,0,77,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -42,10 +41,9 @@
 
         <StackPanel Name="ControlPanel" Margin="-324,73,124,0" Grid.RowSpan="9" Background="Gray">
             <Button x:Name="start" Content="Start" Click="StartClick" Height="63" Background="White" Width="224" Margin="0,15,0,0"/>
-            <Label x:Name="StepCount" Content="" Background="Gray" Height="52" Margin="20,440,20,20" Width="224" FontWeight="Normal" HorizontalContentAlignment="Center"/>
+            <Button x:Name="load" Content="Load File" Click="LoadClick" Height="63" Background="White" Width="224" Margin="0, 15, 0, 0"></Button>
+            <Label x:Name="stepCount" Content="" Background="White" Height="52" Margin="20,348,20,20" Width="224" FontWeight="Normal" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </StackPanel>
-
-
 
         <Label Name="label1" FontSize="25" Margin="30,18,30,18" Grid.Column="0"/>
         <Label Name="label2" FontSize="25" Margin="30,18,30,18" Grid.Column="1"/>

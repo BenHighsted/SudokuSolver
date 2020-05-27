@@ -42,6 +42,7 @@ namespace SudokuInterface
                               { 0, 4, 0, 0, 5, 0, 0, 3, 6 },
                               { 7, 0, 3, 0, 1, 8, 0, 0, 0 }
         };
+        public int moves = 0;
 
         public MainWindow()
         {
@@ -50,14 +51,35 @@ namespace SudokuInterface
         }
 
         public void StartClick(object sender, RoutedEventArgs e) {
-            int[,] newGrid = grid;
 
-            UpdateGrid(newGrid);
-            Solve(newGrid, 0, 0);
+            if(start.Content.Equals("Start")) 
+            {
+                int[,] newGrid = grid;
 
-            UpdateGrid(newGrid);
+                UpdateGrid(newGrid);
+                Solve(newGrid, 0, 0);
 
-            start.IsEnabled = false;
+                stepCount.Content = "Solved in " + moves + " moves.";// Displays the number of moves made
+                moves = 0;
+
+                UpdateGrid(newGrid);
+
+                start.Content = "Reset";
+            }
+
+        }
+
+        public void LoadClick(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("'Load File' button pressed");
+        }
+
+        public void CreateGridFromFile(String file) 
+        {
+            for (int i = 0; i < 81; i++) 
+            { 
+                
+            }
         }
 
         void UpdateGrid(int[,] grid)
@@ -82,7 +104,6 @@ namespace SudokuInterface
                     }
                 }
             }
-
         }
 
         /** might move these to a libary later but for now keeping them here */
@@ -94,12 +115,14 @@ namespace SudokuInterface
                 col++;
                 if (col == 9)
                 {//complete
+                    moves++;
                     return true;
                 }
             }
 
             if (grid[row, col] != 0)
             {//clue value, so move on
+                moves++;
                 return Solve(grid, row + 1, col);
             }
 
@@ -108,6 +131,7 @@ namespace SudokuInterface
             {
                 if (ValidatePlacement(grid, row, col, i))
                 {
+                    moves++;
                     grid[row, col] = i;
                     if (Solve(grid, row + 1, col))
                     {

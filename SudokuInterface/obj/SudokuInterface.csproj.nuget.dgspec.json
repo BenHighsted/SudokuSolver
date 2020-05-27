@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj": {}
+    "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj": {
+    "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj",
+        "projectUniqueName": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj",
         "projectName": "SudokuInterface",
-        "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj",
+        "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuInterface\\SudokuInterface.csproj",
         "packagesPath": "C:\\Users\\Ben Highsted\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuInterface\\obj\\",
+        "outputPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuInterface\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ben Highsted\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
-                "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj"
+              "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
+                "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj"
               }
             }
           }
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
+    "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
+        "projectUniqueName": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
         "projectName": "SudokuSolver",
-        "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
+        "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj",
         "packagesPath": "C:\\Users\\Ben Highsted\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ben Highsted\\Desktop\\CSharpSudoku\\SudokuSolver\\SudokuSolver\\obj\\",
+        "outputPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ben Highsted\\AppData\\Roaming\\NuGet\\NuGet.Config",
