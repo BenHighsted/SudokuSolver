@@ -19,15 +19,12 @@ C:\Users\Ben Highsted\Desktop\CSharpSudoku\SudokuSolver\SudokuInterface\bin\Debu
 C:\Users\Ben Highsted\Desktop\CSharpSudoku\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuSolver.dll
 C:\Users\Ben Highsted\Desktop\CSharpSudoku\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuSolver.pdb
 C:\Users\Ben Highsted\Desktop\CSharpSudoku\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.csproj.CopyComplete
-C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuSolver.exe
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.exe
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.deps.json
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.runtimeconfig.json
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.runtimeconfig.dev.json
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.dll
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuInterface.pdb
-C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuSolver.dll
-C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\bin\Debug\netcoreapp3.1\SudokuSolver.pdb
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.csprojAssemblyReference.cache
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\App.g.cs
@@ -37,6 +34,5 @@ C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\D
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.g.resources
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.AssemblyInfoInputs.cache
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.AssemblyInfo.cs
-C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.csproj.CopyComplete
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.dll
 C:\Users\Ben Highsted\Desktop\NewSudokuSolver\SudokuSolver\SudokuInterface\obj\Debug\netcoreapp3.1\SudokuInterface.pdb

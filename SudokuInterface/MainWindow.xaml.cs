@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.Diagnostics;
-using SudokuSolver;
 using System.Threading;
 using System.ComponentModel;
 using System.Windows.Threading;
@@ -73,6 +72,7 @@ namespace SudokuInterface
             {
                 UpdateGrid(originalGrid);
                 start.Content = "Start";
+                stepCount.Text = "The amount of moves will be displayed here...";
 
                 for (int i = 0; i < 9; i++)
                 {

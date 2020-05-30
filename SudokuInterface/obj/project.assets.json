@@ -1,30 +1,11 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
-      "SudokuSolver/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/SudokuSolver.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SudokuSolver.dll": {}
-        }
-      }
-    }
+    ".NETCoreApp,Version=v3.1": {}
   },
-  "libraries": {
-    "SudokuSolver/1.0.0": {
-      "type": "project",
-      "path": "../SudokuSolver/SudokuSolver.csproj",
-      "msbuildProject": "../SudokuSolver/SudokuSolver.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
-      "SudokuSolver >= 1.0.0"
-    ]
+    ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
     "C:\\Users\\Ben Highsted\\.nuget\\packages\\": {}
@@ -51,11 +32,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {
-            "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj": {
-              "projectPath": "C:\\Users\\Ben Highsted\\Desktop\\NewSudokuSolver\\SudokuSolver\\SudokuSolver\\SudokuSolver.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
