@@ -46,6 +46,12 @@ namespace SudokuInterface
             UpdateGrid(grid);
         }
 
+        /// <summary>
+        /// This method is called when the user clicks the 'Start' button. It is used to run the methods that solve the puzzle.
+        /// When it is pressed, the button is changed to 'Reset'. When pressed again, it will reset the button to the original state.
+        /// </summary>
+        /// <param name="sender">Contains a reference to the button 'Scan' that raises this event</param>
+        /// <param name="e">Contains the event data</param>
         public void StartClick(object sender, RoutedEventArgs e)
         {
             if (start.Content.Equals("Start"))
@@ -85,6 +91,11 @@ namespace SudokuInterface
             }
         }
 
+        /// <summary>
+        /// This method is used to update the labels in real time by creating a new thread to handle it.
+        /// </summary>
+        /// <param name="val">The number to be added to the label</param>
+        /// <param name="label">The label that needs updating</param>
         void UpdateLabel(String val, Label label)
         {
             Task.Run(() =>
@@ -104,6 +115,11 @@ namespace SudokuInterface
             });
         }
 
+        /// <summary>
+        /// This method is called when the user clicks the 'Load' button. It is used to load in a file and set up the puzzle.
+        /// </summary>
+        /// <param name="sender">Contains a reference to the button 'Scan' that raises this event</param>
+        /// <param name="e">Contains the event data</param>
         public void LoadClick(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFile = new Microsoft.Win32.OpenFileDialog();
@@ -125,16 +141,30 @@ namespace SudokuInterface
             }
         }
 
+        /// <summary>
+        /// This method is called when the user checks the 'Difficult' box. It simplies sets the boolean value of difficult to true.
+        /// </summary>
+        /// <param name="sender">Contains a reference to the button 'Scan' that raises this event</param>
+        /// <param name="e">Contains the event data</param>
         void HandleCheck(object sender, RoutedEventArgs e) 
         {
             difficult = true;
         }
 
+        /// <summary>
+        /// This method is called when the user checks the 'Difficult' box. It simplies sets the boolean value of difficult to true.
+        /// </summary>
+        /// <param name="sender">Contains a reference to the button 'Scan' that raises this event</param>
+        /// <param name="e">Contains the event data</param>
         void HandleUnchecked(object sender, RoutedEventArgs e) 
         {
             difficult = false;
         }
 
+        /// <summary>
+        /// Updates the grid with the users selected puzzle
+        /// </summary>
+        /// <param name="file">The puzzle that the user has selected using the load method</param>
         public void CreateGridFromFile(String[] file)
         {
             int[,] newGrid = grid;
@@ -152,6 +182,10 @@ namespace SudokuInterface
             UpdateGrid(newGrid);
         }
 
+        /// <summary>
+        /// Updates the WPF labels to the new grid
+        /// </summary>
+        /// <param name="grid">The grid that the labels have to update from</param>
         void UpdateGrid(int[,] grid)
         {
             int count = 0;
@@ -166,7 +200,6 @@ namespace SudokuInterface
 
                     if (val != 0)
                     {
-                        //label.Content = val.ToString();
                        if (running == true && difficult == false)
                         {
                             UpdateLabel(val.ToString(), label);
@@ -177,7 +210,6 @@ namespace SudokuInterface
                     }
                     else
                     {
-                        //label.Content = "";
                         if (running == true && difficult == false)
                         {
                             UpdateLabel("", label);
@@ -190,7 +222,12 @@ namespace SudokuInterface
             }
         }
 
-        /** might move these to a libary later but for now keeping them here */
+        /// <summary>
+        /// This method uses recursive backtracking to solve the puzzle.
+        /// </summary>
+        /// <param name="grid">The current state of the grid</param>
+        /// <param name="row">The row that we are currently trying to place the value on</param>
+        /// <param name="col">The column we are currently trying to place the value on</param>
         bool Solve(int[,] grid, int row, int col)
         {
             if (!difficult) 
@@ -245,7 +282,14 @@ namespace SudokuInterface
 
         }
 
-        /* This method checks if the value can be placed in the current position */
+        /// <summary>
+        /// Checks all the conditions of a place value to check if it can 
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <param name="newVal"></param>
+        /// <returns>True if the placement is valid, false if the placement is invalid</returns>
         bool ValidatePlacement(int[,] grid, int row, int col, int newVal)
         {
             //Check column
